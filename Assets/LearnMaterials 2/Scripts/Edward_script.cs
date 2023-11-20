@@ -9,7 +9,7 @@ public class Edward_script : SampleScript
     private Vector3 initialPosition;
     private bool isMoving = false;
 
-    [ContextMenu("Go")]
+    [ContextMenu("Запуск скрипта")]
     public override void Use()
     {
         if (!isMoving)
