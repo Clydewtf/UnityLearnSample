@@ -8,14 +8,14 @@ public class ObstacleItem : MonoBehaviour
     public float currentValue = 1f;
     public UnityEvent onDestroyObstacle;
 
-    private SpriteRenderer spriteRenderer;
+    private Renderer meshRenderer;
 
     private Color startColor;
     private Color endColor;
 
     private void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        meshRenderer = GetComponent<Renderer>();
         startColor = Color.white;
         endColor = Color.red;
     }
@@ -30,11 +30,7 @@ public class ObstacleItem : MonoBehaviour
             onDestroyObstacle.Invoke();
             Destroy(gameObject);
         }
-        Color currentColor = Color.Lerp(endColor, startColor, currentValue);
-
-        
-        spriteRenderer.color = currentColor;
+        Color currentColor = Color.Lerp(startColor, endColor, currentValue);
+        meshRenderer.material.color = currentColor;
     }
 }
-
-

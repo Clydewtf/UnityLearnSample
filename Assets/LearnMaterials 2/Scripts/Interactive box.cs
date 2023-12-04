@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class InteractiveBox : MonoBehaviour
+public class InteractiveBox : ObstacleItem
 {
     [SerializeField]
     public InteractiveBox next;
@@ -11,13 +11,13 @@ public class InteractiveBox : MonoBehaviour
         next = box;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (next != null)
         {
             Debug.DrawLine(transform.position, next.transform.position, Color.red);
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, next.transform.position - transform.position, out hit))
+            if (Physics.Raycast(transform.position, (next.transform.position - transform.position).normalized, out hit))
             {
                 ObstacleItem obstacle = hit.collider.GetComponent<ObstacleItem>();
                 obstacle?.GetDamage(Time.deltaTime);
