@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class InteractiveBox : ObstacleItem
+public class InteractiveBox : MonoBehaviour
 {
     [SerializeField]
     public InteractiveBox next;

@@ -40,7 +40,7 @@ public class InteractiveRaycast : InteractiveBox
 
     void CreateInteractiveBox(Vector3 position, Vector3 normal)
     {
-        GameObject newBox = Instantiate(prefab, position, Quaternion.identity);
+        GameObject newBox = Instantiate(prefab, position + normal * prefab.transform.localScale.x / 2, Quaternion.identity);
         InteractiveBox interactiveBox = newBox.GetComponent<InteractiveBox>();
 
         if (interactiveBox != null)
